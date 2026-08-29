@@ -1,0 +1,17 @@
+@import 'tailwindcss';
+
+:root{--navy:#1d2440;--pink:#f18fab;--paper:#f4f4ef}
+*{box-sizing:border-box}html{scroll-behavior:smooth;background:var(--navy)}body{margin:0;background:var(--navy);color:var(--paper);font-family:Arial,"Microsoft YaHei",sans-serif}a{color:inherit}
+.effect-page{width:100%;min-height:100vh;background:var(--navy);overflow:hidden}
+.effect-canvas{position:relative;width:100%;max-width:1800px;margin:0 auto;background:var(--navy)}
+.effect-image{display:block;width:100%;height:auto;user-select:none;-webkit-user-drag:none}
+.hotspot,.footer-hotspots a{position:absolute;z-index:5;display:block;border-radius:999px}
+.hotspot:focus-visible,.footer-hotspots a:focus-visible{outline:5px solid #fff;outline-offset:4px;background:rgba(241,143,171,.18)}
+.about-link{left:41%;top:27.5%;width:18%;height:1.8%}
+.more-link{left:40%;top:54.3%;width:21%;height:1.7%}
+.works-link{left:39%;top:86.5%;width:23%;height:1.7%}
+.page-anchor{position:absolute;left:0;width:1px;height:1px;pointer-events:none}.anchor-top{top:0}.anchor-about{top:31%}.anchor-experience{top:57%}.anchor-works{top:70%}.anchor-contact{top:92%}
+.footer-hotspots{position:absolute;z-index:4;left:45%;top:90.7%;width:51%;height:8.5%}
+.footer-hotspots a{left:0;width:100%;height:16%;border-radius:0}.nav-home{top:0}.nav-about{top:20%}.nav-experience{top:40%}.nav-works{top:60%}.nav-contact{top:80%}
+@media(max-width:760px){.effect-canvas{min-width:100%}.hotspot:focus-visible,.footer-hotspots a:focus-visible{outline-width:2px;outline-offset:1px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
