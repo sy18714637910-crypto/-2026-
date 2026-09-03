@@ -5,6 +5,7 @@ import type { CSSProperties, ReactNode } from 'react';
 
 const DESIGN_WIDTH = 1925;
 const DESIGN_HEIGHT = 10755;
+const HERO_SCROLL_DISTANCE = 700;
 
 function box(x: number, y: number, width: number, height?: number): CSSProperties {
   return {
@@ -68,7 +69,9 @@ export default function Home() {
     const face = document.querySelector<HTMLElement>('.hero-face-normal');
     const sequence = document.querySelector<HTMLImageElement>('.hero-peel-frame');
     const titleMotion = document.querySelector<HTMLElement>('.hero-title-motion');
-    if (!hero || !face || !sequence || !titleMotion) return;
+    const characterMotion = document.querySelector<HTMLElement>('.hero-character-motion');
+    const debug = document.querySelector<HTMLElement>('.hero-motion-debug');
+    if (!hero || !face || !sequence || !titleMotion || !characterMotion) return;
 
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     const frameUrls = Array.from({ length: 12 }, (_, index) =>
@@ -79,7 +82,7 @@ export default function Home() {
     let raf = 0;
     let pointerRaf = 0;
     let pointerTarget = { x: 0, y: 0 };
-    let pointer = { x: 0, y: 0 };
+    const pointer = { x: 0, y: 0 };
 
     const preload = async () => {
       try {
@@ -102,12 +105,15 @@ export default function Home() {
     const clamp = (value: number, min = 0, max = 1) => Math.min(max, Math.max(min, value));
     const updateScroll = () => {
       raf = 0;
-      const animationDistance = window.innerWidth <= 767 ? 520 : 680;
-      const progress = clamp(window.scrollY / animationDistance);
+      const heroStart = 0;
+      const heroProgress = clamp((window.scrollY - heroStart) / HERO_SCROLL_DISTANCE);
+      const progress = heroProgress;
+      const titleY = reduceMotion.matches ? 0 : -160 * progress;
+      const characterY = reduceMotion.matches ? 0 : -300 * progress;
       const peeling = framesReady && progress > 0;
       hero.dataset.peelState = peeling ? (progress >= 1 ? 'scrolled' : 'peeling') : 'idle';
-      titleMotion.style.setProperty('--hero-title-scroll-y', `${reduceMotion.matches ? 0 : -70 * progress}px`);
-      hero.style.setProperty('--hero-character-scroll-y', `${reduceMotion.matches ? 0 : -28 * progress}px`);
+      titleMotion.style.setProperty('--hero-title-scroll-y', `${titleY}px`);
+      characterMotion.style.setProperty('--hero-character-scroll-y', `${characterY}px`);
       sequence.style.opacity = peeling ? '1' : '0';
       face.style.opacity = peeling ? '0' : '1';
       if (peeling) {
@@ -116,10 +122,19 @@ export default function Home() {
           currentFrame = frameIndex;
           sequence.src = frameUrls[frameIndex];
           sequence.dataset.frameIndex = String(frameIndex);
+          console.log({ frameIndex, frame: frameUrls[frameIndex] });
         }
       } else {
         currentFrame = -1;
       }
+      if (debug) {
+        debug.querySelector<HTMLElement>('[data-debug="progress"]')!.textContent = heroProgress.toFixed(2);
+        debug.querySelector<HTMLElement>('[data-debug="frame"]')!.textContent = `${Math.max(0, currentFrame)} / 11`;
+        debug.querySelector<HTMLElement>('[data-debug="title-y"]')!.textContent = `${Math.round(titleY)}px`;
+        debug.querySelector<HTMLElement>('[data-debug="character-y"]')!.textContent = `${Math.round(characterY)}px`;
+        debug.querySelector<HTMLElement>('[data-debug="state"]')!.textContent = hero.dataset.peelState?.toUpperCase() ?? 'IDLE';
+      }
+      console.log({ scrollY: window.scrollY, heroStart, heroProgress, frameIndex: Math.max(0, currentFrame), titleY, characterY });
       face.style.setProperty('--pointer-x', `${pointer.x}px`);
       face.style.setProperty('--pointer-y', `${pointer.y}px`);
     };
@@ -206,6 +221,14 @@ export default function Home() {
 
           <a className="pill hero-button" style={box(787, 3060, 350, 95)} href="#about">了解我</a>
         </section>
+
+        <aside className="hero-motion-debug" aria-hidden="true">
+          <div>Hero Progress: <strong data-debug="progress">0.00</strong></div>
+          <div>Frame: <strong data-debug="frame">0 / 11</strong></div>
+          <div>Title Y: <strong data-debug="title-y">0px</strong></div>
+          <div>Character Y: <strong data-debug="character-y">0px</strong></div>
+          <div>State: <strong data-debug="state">IDLE</strong></div>
+        </aside>
 
         <Layer number={1108} x={-295} y={2956} width={2514} className="tear tear-one" />
 
