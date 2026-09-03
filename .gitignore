@@ -36,3 +36,6 @@ next-env.d.ts
 /.wrangler/
 /outputs/
 /work/
+/screenshots/
+/.npm-cache/
+/site-release.tar.gz
