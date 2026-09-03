@@ -6,6 +6,16 @@ import type { CSSProperties, ReactNode } from 'react';
 const DESIGN_WIDTH = 1925;
 const DESIGN_HEIGHT = 10755;
 const HERO_SCROLL_DISTANCE = 700;
+const PROJECT_STAGE_TOP = 1980;
+
+const projectMotion = [
+  { id: 'camera', entry: [-150, -110, -7, 0.72], scatter: [-72, -58], core: false },
+  { id: 'phone', entry: [145, -105, 3, 0.76], scatter: [82, -76], core: false },
+  { id: 'film', entry: [12, 92, -2, 0.86], scatter: [0, 0], core: true },
+  { id: 'whale', entry: [-138, 112, -4, 0.74], scatter: [-88, 76], core: false },
+  { id: 'yellow', entry: [154, -38, 5, 0.78], scatter: [92, -20], core: false },
+  { id: 'beacon', entry: [142, 106, 6, 0.75], scatter: [96, 72], core: false },
+] as const;
 
 function box(x: number, y: number, width: number, height?: number): CSSProperties {
   return {
@@ -71,6 +81,9 @@ export default function Home() {
     const titleMotion = document.querySelector<HTMLElement>('.hero-title-motion');
     const characterMotion = document.querySelector<HTMLElement>('.hero-character-motion');
     const debug = document.querySelector<HTMLElement>('.hero-motion-debug');
+    const projectStage = document.querySelector<HTMLElement>('.hero-projects-scroll-stage');
+    const projectCollage = document.querySelector<HTMLElement>('.hero-projects-collage');
+    const projectCards = Array.from(document.querySelectorAll<HTMLElement>('.hero-project-card'));
     if (!hero || !face || !sequence || !titleMotion || !characterMotion) return;
 
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -83,6 +96,8 @@ export default function Home() {
     let pointerRaf = 0;
     let pointerTarget = { x: 0, y: 0 };
     const pointer = { x: 0, y: 0 };
+    const projectPointerTarget = new Map<string, { x: number; y: number; scale: number; rotate: number; z: number }>();
+    const projectPointer = new Map<string, { x: number; y: number; scale: number; rotate: number }>();
 
     const preload = async () => {
       try {
@@ -137,6 +152,35 @@ export default function Home() {
       console.log({ scrollY: window.scrollY, heroStart, heroProgress, frameIndex: Math.max(0, currentFrame), titleY, characterY });
       face.style.setProperty('--pointer-x', `${pointer.x}px`);
       face.style.setProperty('--pointer-y', `${pointer.y}px`);
+
+      if (projectStage && projectCollage && projectCards.length) {
+        const stageRect = projectStage.getBoundingClientRect();
+        const stageRange = Math.max(1, projectStage.offsetHeight - window.innerHeight);
+        const projectProgress = reduceMotion.matches
+          ? 0.45
+          : clamp((window.scrollY - (stageRect.top + window.scrollY)) / stageRange);
+        projectStage.dataset.progress = projectProgress.toFixed(3);
+        projectCards.forEach((card, index) => {
+          const motion = projectMotion[index];
+          const entryT = ease(projectProgress / 0.45);
+          const scatterT = ease((projectProgress - 0.65) / 0.2);
+          const entryX = motion.entry[0] * (1 - entryT);
+          const entryY = motion.entry[1] * (1 - entryT);
+          const entryRotate = motion.entry[2] * (1 - entryT);
+          const entryScale = motion.entry[3] + (1 - motion.entry[3]) * entryT;
+          const scatterX = motion.scatter[0] * scatterT;
+          const scatterY = motion.scatter[1] * scatterT;
+          const coreScale = motion.core ? 0.16 * ease((projectProgress - 0.85) / 0.15) : 0;
+          card.style.setProperty('--scroll-x', `${entryX + scatterX}px`);
+          card.style.setProperty('--scroll-y', `${entryY + scatterY - coreScale * 18}px`);
+          card.style.setProperty('--scroll-rotate', `${entryRotate}deg`);
+          card.style.setProperty('--scroll-scale', String(entryScale + coreScale));
+        });
+      }
+    };
+    const ease = (value: number) => {
+      const t = clamp(value);
+      return t * t * t * (t * (t * 6 - 15) + 10);
     };
     const requestScrollUpdate = () => {
       if (!raf) raf = window.requestAnimationFrame(updateScroll);
@@ -164,10 +208,68 @@ export default function Home() {
     };
     const resetPointer = () => { pointerTarget = { x: 0, y: 0 }; if (!pointerRaf) pointerRaf = window.requestAnimationFrame(updatePointer); };
 
+    const updateProjectPointer = () => {
+      pointerRaf = 0;
+      projectCards.forEach((card) => {
+        const id = card.dataset.projectId ?? '';
+        const target = projectPointerTarget.get(id) ?? { x: 0, y: 0, scale: 1, rotate: 0, z: 1 };
+        const current = projectPointer.get(id) ?? { x: 0, y: 0, scale: 1, rotate: 0 };
+        current.x += (target.x - current.x) * 0.11;
+        current.y += (target.y - current.y) * 0.11;
+        current.scale += (target.scale - current.scale) * 0.11;
+        current.rotate += (target.rotate - current.rotate) * 0.11;
+        projectPointer.set(id, current);
+        card.style.setProperty('--mag-x', `${current.x}px`);
+        card.style.setProperty('--mag-y', `${current.y}px`);
+        card.style.setProperty('--mag-scale', String(current.scale));
+        card.style.setProperty('--mag-rotate', `${current.rotate}deg`);
+        card.style.zIndex = String(target.z);
+      });
+      if (projectCards.some((card) => {
+        const id = card.dataset.projectId ?? '';
+        const target = projectPointerTarget.get(id) ?? { x: 0, y: 0, scale: 1, rotate: 0, z: 1 };
+        const current = projectPointer.get(id)!;
+        return Math.abs(target.x - current.x) > 0.1 || Math.abs(target.y - current.y) > 0.1 || Math.abs(target.scale - current.scale) > 0.002;
+      })) pointerRaf = window.requestAnimationFrame(updateProjectPointer);
+    };
+    const onProjectPointerMove = (event: PointerEvent) => {
+      if (reduceMotion.matches || !projectStage || !projectCollage || event.pointerType === 'touch') return;
+      const progress = Number(projectStage.dataset.progress ?? 0);
+      if (progress < 0.45 || progress > 0.65) return;
+      const pointerX = event.clientX;
+      const pointerY = event.clientY;
+      const active = projectCards.map((card) => {
+        const rect = card.getBoundingClientRect();
+        const dx = pointerX - (rect.left + rect.width / 2);
+        const dy = pointerY - (rect.top + rect.height / 2);
+        return { card, distance: Math.hypot(dx, dy), dx, dy };
+      });
+      const nearest = Math.min(...active.map((item) => item.distance));
+      active.forEach(({ card, distance, dx, dy }) => {
+        const id = card.dataset.projectId ?? '';
+        const influence = Math.max(0, 1 - distance / 260);
+        const outward = nearest < 230 && distance > nearest ? Math.min(1, (distance - nearest) / 260) : 0;
+        projectPointerTarget.set(id, {
+          x: Math.max(-16, Math.min(16, dx * 0.08 * influence)) + (dx > 0 ? outward * 3 : -outward * 3),
+          y: Math.max(-16, Math.min(16, dy * 0.08 * influence)) + (dy > 0 ? outward * 3 : -outward * 3),
+          scale: 1 + influence * 0.05,
+          rotate: -((card.dataset.projectId === 'film' ? 0 : 1) * influence * 1.4),
+          z: 20 + Math.round(influence * 20),
+        });
+      });
+      if (!pointerRaf) pointerRaf = window.requestAnimationFrame(updateProjectPointer);
+    };
+    const resetProjectPointer = () => {
+      projectCards.forEach((card) => projectPointerTarget.set(card.dataset.projectId ?? '', { x: 0, y: 0, scale: 1, rotate: 0, z: 1 }));
+      if (!pointerRaf) pointerRaf = window.requestAnimationFrame(updateProjectPointer);
+    };
+
     window.addEventListener('scroll', requestScrollUpdate, { passive: true });
     window.addEventListener('resize', requestScrollUpdate, { passive: true });
     hero.addEventListener('pointermove', onPointerMove, { passive: true });
     hero.addEventListener('pointerleave', resetPointer, { passive: true });
+    projectCollage?.addEventListener('pointermove', onProjectPointerMove, { passive: true });
+    projectCollage?.addEventListener('pointerleave', resetProjectPointer, { passive: true });
     if (!reduceMotion.matches) preload();
     else { framesReady = false; updateScroll(); }
     updateScroll();
@@ -176,6 +278,8 @@ export default function Home() {
       window.removeEventListener('resize', requestScrollUpdate);
       hero.removeEventListener('pointermove', onPointerMove);
       hero.removeEventListener('pointerleave', resetPointer);
+      projectCollage?.removeEventListener('pointermove', onProjectPointerMove);
+      projectCollage?.removeEventListener('pointerleave', resetProjectPointer);
       if (raf) window.cancelAnimationFrame(raf);
       if (pointerRaf) window.cancelAnimationFrame(pointerRaf);
     };
@@ -203,20 +307,23 @@ export default function Home() {
             <img className="hero-face-normal" src="/assets/hero-face.png" alt="" />
             <img className="hero-peel-frame" src="/assets/hero-peel/frame-00025.png" alt="" decoding="async" />
           </div>
-
           <TextBox x={500} y={1565} width={925} className="hero-copy">
             <p><span>洞察</span>藏在褶皱里</p>
             <p><span>韧劲</span>磨在时间里</p>
             <p>保持敏感，保持追问</p>
           </TextBox>
 
-          <div className="hero-projects" aria-label="项目缩略图拼贴">
-            <Layer number={1113} x={606} y={2165} width={341} alt="摄影项目" />
-            <Layer number={1117} x={656} y={2383} width={145} alt="产品界面项目" />
-            <Layer number={1112} x={742} y={2227} width={600} alt="影片项目" />
-            <Layer number={1115} x={742} y={2547} width={232} alt="蓝鲸名人堂项目" />
-            <Layer number={1116} x={1125} y={2341} width={274} alt="内容运营项目" />
-            <Layer number={1114} x={1041} y={2547} width={300} alt="Beacon Tower 项目" />
+          <div className="hero-projects-scroll-stage" style={{ top: `${(PROJECT_STAGE_TOP / DESIGN_HEIGHT) * 100}%` }} aria-label="项目缩略图拼贴滚动舞台">
+            <div className="hero-projects-sticky">
+              <div className="hero-projects-collage" aria-label="项目缩略图拼贴">
+                <div className="hero-project-card hero-project-card--camera" data-project-id="camera"><img src={asset(1113)} alt="摄影项目" /></div>
+                <div className="hero-project-card hero-project-card--phone" data-project-id="phone"><img src={asset(1117)} alt="产品界面项目" /></div>
+                <div className="hero-project-card hero-project-card--film" data-project-id="film"><img src={asset(1112)} alt="影片项目" /></div>
+                <div className="hero-project-card hero-project-card--whale" data-project-id="whale"><img src={asset(1115)} alt="蓝鲸名人堂项目" /></div>
+                <div className="hero-project-card hero-project-card--yellow" data-project-id="yellow"><img src={asset(1116)} alt="内容运营项目" /></div>
+                <div className="hero-project-card hero-project-card--beacon" data-project-id="beacon"><img src={asset(1114)} alt="Beacon Tower 项目" /></div>
+              </div>
+            </div>
           </div>
 
           <a className="pill hero-button" style={box(787, 3060, 350, 95)} href="#about">了解我</a>

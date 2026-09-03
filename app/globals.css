@@ -19,12 +19,12 @@ body {
 a { color: inherit; text-decoration: none; }
 button { font: inherit; }
 
-.page-shell { width: 100%; overflow: hidden; background: var(--navy); }
+.page-shell { width: 100%; overflow: clip; background: var(--navy); }
 .design-canvas {
   position: relative;
   width: 100%;
   aspect-ratio: 1925 / 10755;
-  overflow: hidden;
+  overflow: clip;
   background: var(--navy);
   isolation: isolate;
 }
@@ -116,6 +116,73 @@ button { font: inherit; }
 .hero-copy p { margin: 0; }
 .hero-copy span { color: var(--pink); }
 .hero-projects .layer { z-index: 9; }
+
+/* Scroll-driven project collage: the stage supplies 180vh of narrative space,
+   while the artwork itself remains centered and sticky in the viewport. */
+.hero-projects-scroll-stage {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 180vh;
+  pointer-events: none;
+  z-index: 12;
+}
+.hero-projects-sticky {
+  position: sticky;
+  top: 16vh;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 68vh;
+  pointer-events: none;
+}
+.hero-projects-collage {
+  position: relative;
+  width: min(60vw, 900px);
+  height: min(51vw, 760px);
+  transform: scale(1.3);
+  transform-origin: center;
+  pointer-events: auto;
+  isolation: isolate;
+}
+.hero-project-card {
+  position: absolute;
+  display: block;
+  transform: translate3d(
+    calc(var(--scroll-x, 0px) + var(--mag-x, 0px)),
+    calc(var(--scroll-y, 0px) + var(--mag-y, 0px)),
+    0
+  ) rotate(calc(var(--scroll-rotate, 0deg) + var(--mag-rotate, 0deg)))
+    scale(calc(var(--scroll-scale, 1) * var(--mag-scale, 1)));
+  transform-origin: center;
+  transition: filter 180ms ease-out;
+  will-change: transform;
+  pointer-events: auto;
+}
+.hero-project-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: none;
+  pointer-events: none;
+  user-select: none;
+}
+.hero-project-card--camera { left: 0%; top: 1%; width: 31%; }
+.hero-project-card--phone { left: 10%; top: 37%; width: 13%; }
+.hero-project-card--film { left: 22%; top: 19%; width: 55%; z-index: 4; }
+.hero-project-card--whale { left: 22%; top: 63%; width: 21%; }
+.hero-project-card--yellow { left: 62%; top: 34%; width: 25%; }
+.hero-project-card--beacon { left: 55%; top: 64%; width: 28%; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-project-card { transition: none; }
+}
+
+@media (max-width: 700px) {
+  .hero-projects-scroll-stage { height: 165vh; }
+  .hero-projects-sticky { top: 18vh; height: 58vh; }
+  .hero-projects-collage { width: 82vw; height: 64vw; transform: scale(1.16); }
+}
 
 .pill {
   position: absolute;
