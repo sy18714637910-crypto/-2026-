@@ -256,7 +256,7 @@ button { font: inherit; }
 .product-detail-canvas {
   position: relative;
   width: 100%;
-  aspect-ratio: 1921 / 15182;
+  aspect-ratio: 1921 / 16652;
   overflow: hidden;
   background: var(--navy);
   isolation: isolate;
@@ -379,7 +379,7 @@ button { font: inherit; }
 .brand-film-canvas {
   position: relative;
   width: 100%;
-  aspect-ratio: 1921 / 13284;
+  aspect-ratio: 1921 / 14750;
   overflow: hidden;
   background: var(--navy);
   isolation: isolate;
@@ -502,7 +502,7 @@ button { font: inherit; }
 .proposal-canvas {
   position: relative;
   width: 100%;
-  aspect-ratio: 1921 / 5114;
+  aspect-ratio: 1921 / 6500;
   overflow: hidden;
   background: var(--navy);
   isolation: isolate;
@@ -620,7 +620,7 @@ button { font: inherit; }
   isolation: isolate;
 }
 .visual-part-one { aspect-ratio: 1921 / 15951; }
-.visual-part-two { aspect-ratio: 1921 / 4822; }
+.visual-part-two { aspect-ratio: 1921 / 6200; }
 .visual-layer {
   position: absolute;
   display: block;

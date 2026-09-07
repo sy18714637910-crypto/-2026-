@@ -2,7 +2,8 @@ import type { CSSProperties, Metadata } from 'next';
 import ModuleDirectory from '../components/module-directory';
 
 const DESIGN_WIDTH = 1921;
-const DESIGN_HEIGHT = 15182;
+// The final case board ends at y=13593; reserve a complete directory block before the footer.
+const DESIGN_HEIGHT = 16652;
 
 export const metadata: Metadata = {
   title: '产品内容运营｜SU YUE',
@@ -67,20 +68,20 @@ export default function ProductContentOperationsPage() {
           <Layer number={978} x={341} y={11990} width={1288} alt="日语学习账号内容运营复盘" />
         </section>
 
-        <ModuleDirectory style={box(60, 12300, 1801, 1220)} />
+        <ModuleDirectory style={box(60, 13650, 1801, 1220)} />
 
         <footer id="contact" className="product-detail-footer">
-          <Layer number={1033} x={50} y={13810} width={229} className="product-footer-wordmark" alt="SU YUE" />
-          <div className="product-footer-actions" style={box(1640, 13815, 235, 65)}>
+          <Layer number={1033} x={50} y={15280} width={229} className="product-footer-wordmark" alt="SU YUE" />
+          <div className="product-footer-actions" style={box(1640, 15285, 235, 65)}>
             <button type="button" aria-label="打开导航菜单">≡</button>
             <a href="#contact">联系我</a>
           </div>
 
-          <Layer number={1034} x={-610} y={13860} width={1800} className="product-footer-face" alt="苏越肖像" />
-          <Layer number={1031} x={320} y={14030} width={313} className="product-footer-bubble" />
-          <Layer number={1030} x={355} y={14062} width={239} className="product-footer-bubble-copy" alt="这么快就走了？" />
+          <Layer number={1034} x={-610} y={15330} width={1800} className="product-footer-face" alt="苏越肖像" />
+          <Layer number={1031} x={320} y={15500} width={313} className="product-footer-bubble" />
+          <Layer number={1030} x={355} y={15532} width={239} className="product-footer-bubble-copy" alt="这么快就走了？" />
 
-          <nav className="product-footer-nav" style={box(710, 13960, 1080, 925)} aria-label="页尾导航">
+          <nav className="product-footer-nav" style={box(710, 15430, 1080, 925)} aria-label="页尾导航">
             <a href="/"><span>01</span>主页</a>
             <a href="/#about"><span>02</span>关于我</a>
             <a href="/#experience"><span>03</span>经历</a>

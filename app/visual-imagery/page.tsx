@@ -80,7 +80,7 @@ export default function VisualImageryPage() {
           <Layer number={958} x={320} y={2527} width={1281} canvasHeight={PART_TWO_HEIGHT} alt="移动端页面视觉设计" />
         </section>
 
-        <ModuleDirectory style={box(60, 3250, 1801, PART_TWO_HEIGHT, 1220)} />
+        <ModuleDirectory style={box(60, 3450, 1801, PART_TWO_HEIGHT, 1220)} />
 
         <footer id="contact" className="visual-footer">
           <Layer number={948} x={48} y={5025} width={226} canvasHeight={PART_TWO_HEIGHT} className="visual-footer-wordmark" alt="SU YUE" />
