@@ -46,7 +46,7 @@ export default function ProductContentOperationsPage() {
           <a className="product-brand" href="/" aria-label="返回主页">SUYUE</a>
           <div className="product-header-actions">
             <button type="button" aria-label="打开导航菜单">≡</button>
-            <a href="#contact">联系我</a>
+            <a href="/contact">联系我</a>
           </div>
         </header>
 
@@ -76,7 +76,7 @@ export default function ProductContentOperationsPage() {
           <Layer number={1033} x={50} y={15280} width={229} className="product-footer-wordmark" alt="SU YUE" />
           <div className="product-footer-actions" style={box(1640, 15285, 235, 65)}>
             <button type="button" aria-label="打开导航菜单">≡</button>
-            <a href="#contact">联系我</a>
+            <a href="/contact">联系我</a>
           </div>
 
           <div className="footer-sticker__reveal" style={{ '--sticker-clip-start': 5.4 } as CSSProperties} aria-hidden="true">
@@ -90,7 +90,7 @@ export default function ProductContentOperationsPage() {
             <a className="footer-directory__item" style={{ '--asset-left': '40%', '--asset-top': '-70%', '--asset-width': '48%', '--asset-from-x': '36px', '--asset-from-y': '0px', '--asset-rotation': '2deg', '--asset-duration': '380ms', '--float-duration': '2.8s' } as CSSProperties} href="/#about-section"><img className="footer-directory__background" src="/assets/footer-directory/资源 43.png" alt="" /><span className="footer-directory__number">02</span><span className="footer-directory__label">关于我</span><span className="footer-directory__asset-entry"><img className="footer-directory__asset-float" src="/assets/footer-directory/资源 34.png" alt="" /></span></a>
             <a className="footer-directory__item" style={{ '--asset-left': '43%', '--asset-top': '-55%', '--asset-width': '42%', '--asset-from-x': '28px', '--asset-from-y': '18px', '--asset-rotation': '-2deg', '--asset-duration': '340ms', '--float-duration': '2.3s' } as CSSProperties} href="/#experience-section"><img className="footer-directory__background" src="/assets/footer-directory/资源 44.png" alt="" /><span className="footer-directory__number">03</span><span className="footer-directory__label">经历</span><span className="footer-directory__asset-entry"><img className="footer-directory__asset-float" src="/assets/footer-directory/资源 33.png" alt="" /></span></a>
             <a className="footer-directory__item" style={{ '--asset-left': '46%', '--asset-top': '-60%', '--asset-width': '34%', '--asset-from-x': '0px', '--asset-from-y': '30px', '--asset-rotation': '2deg', '--asset-duration': '370ms', '--float-duration': '2.7s' } as CSSProperties} href="/#works-section"><img className="footer-directory__background" src="/assets/footer-directory/资源 45.png" alt="" /><span className="footer-directory__number">04</span><span className="footer-directory__label">作品集</span><span className="footer-directory__asset-entry"><img className="footer-directory__asset-float" src="/assets/footer-directory/资源 32.png" alt="" /></span></a>
-            <a className="footer-directory__item" style={{ '--asset-left': '44%', '--asset-top': '-65%', '--asset-width': '34%', '--asset-from-x': '24px', '--asset-from-y': '-18px', '--asset-rotation': '-2deg', '--asset-duration': '350ms', '--float-duration': '2.5s' } as CSSProperties} href="/#home-top"><img className="footer-directory__background" src="/assets/footer-directory/资源 46.png" alt="" /><span className="footer-directory__number">05</span><span className="footer-directory__label">联系我</span><span className="footer-directory__asset-entry"><img className="footer-directory__asset-float" src="/assets/footer-directory/资源 31.png" alt="" /></span></a>
+            <a className="footer-directory__item" style={{ '--asset-left': '44%', '--asset-top': '-65%', '--asset-width': '34%', '--asset-from-x': '24px', '--asset-from-y': '-18px', '--asset-rotation': '-2deg', '--asset-duration': '350ms', '--float-duration': '2.5s' } as CSSProperties} href="/contact"><img className="footer-directory__background" src="/assets/footer-directory/资源 46.png" alt="" /><span className="footer-directory__number">05</span><span className="footer-directory__label">联系我</span><span className="footer-directory__asset-entry"><img className="footer-directory__asset-float" src="/assets/footer-directory/资源 31.png" alt="" /></span></a>
           </nav>
         </footer>
       </div>
