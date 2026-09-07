@@ -131,6 +131,23 @@ button { font: inherit; }
   font-weight: 700;
   line-height: 1;
   cursor: pointer;
+  transition: background-color 220ms ease, transform 220ms cubic-bezier(.22,1,.36,1), filter 220ms ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .hero-button:hover,
+  .about-button:hover,
+  .works-button:hover {
+    background-color: var(--pink);
+    transform: translateY(-3px) scale(1.025);
+    filter: drop-shadow(0 10px 14px rgba(0,0,0,.14));
+  }
+}
+.hero-button:focus-visible,
+.about-button:focus-visible,
+.works-button:focus-visible {
+  background-color: var(--pink);
+  outline: 3px solid var(--pink);
+  outline-offset: 6px;
 }
 .tear {
   z-index: 16;
