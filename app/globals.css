@@ -204,68 +204,19 @@ button { font: inherit; }
 .footer-nav a { display: grid; grid-template-columns: 12% 1fr; align-items: center; border-bottom: 1px solid rgba(255,255,255,.2); font-size: 3.4vw; font-weight: 700; line-height: 1; }
 .footer-nav span { color: #697398; font-size: 1.05vw; font-weight: 400; }
 
-/* Shared cross-page work directory */
-.module-directory {
+/* Shared cross-page work directory; it reuses the homepage's exact card geometry. */
+.module-directory { position: absolute; z-index: 30; }
+.module-directory-mark {
   position: absolute;
-  z-index: 30;
-  color: var(--paper);
-}
-.module-directory-heading {
-  position: absolute;
-  z-index: 2;
+  z-index: 18;
+  left: 0;
   top: 0;
-  left: 0;
-  display: flex;
-  flex-direction: column;
-  gap: .08em;
-  color: var(--paper);
-  font-weight: 700;
-  line-height: 1;
-}
-.module-directory-heading p,
-.module-directory-heading span { margin: 0; }
-.module-directory-heading p { font-size: 3.1vw; }
-.module-directory-heading span { font-size: 1.75vw; font-weight: 400; letter-spacing: .02em; }
-.module-directory-stage {
-  position: absolute;
-  top: 8.5%;
-  left: 0;
-  width: 100%;
-  aspect-ratio: 1801 / 1024;
-}
-.module-directory-layer {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  display: block;
-  width: 100%;
-  height: auto;
+  width: 14.492%;
   max-width: none;
-  pointer-events: none;
+  height: auto;
 }
-.module-directory-links { position: absolute; inset: 0; z-index: 3; }
-.module-directory-link {
-  position: absolute;
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-  padding: .8em 1em;
-  border: 2px solid transparent;
-  border-radius: 1.2em;
-  color: transparent;
-  transition: border-color .2s ease, background-color .2s ease, color .2s ease;
-}
-.module-directory-link span,
-.module-directory-link strong { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
-.module-directory-link em { opacity: 0; color: #111; font-size: clamp(12px, 1vw, 18px); font-style: normal; font-weight: 700; }
-.module-directory-link:hover,
-.module-directory-link:focus-visible { border-color: var(--pink); background: rgba(251,252,246,.18); outline: none; }
-.module-directory-link:hover em,
-.module-directory-link:focus-visible em { opacity: 1; }
-.module-directory-link.module-directory-film { left: 4%; top: 26%; width: 29%; height: 34%; }
-.module-directory-link.module-directory-content { left: 34%; top: 18%; width: 32%; height: 34%; }
-.module-directory-link.module-directory-proposal { left: 66%; top: 25%; width: 32%; height: 33%; }
-.module-directory-link.module-directory-visual { left: 28%; top: 56%; width: 42%; height: 32%; }
+.module-directory-cards { position: absolute; inset: 0; }
+.module-directory-card { z-index: var(--card-layer, 19); }
 .module-directory-home {
   position: absolute;
   z-index: 4;
@@ -288,8 +239,6 @@ button { font: inherit; }
 .module-directory-home:focus-visible { background: var(--pink); outline: none; transform: translateX(-50%) translateY(-3px); }
 
 @media (min-width: 1921px) {
-  .module-directory-heading p { font-size: 59.5px; }
-  .module-directory-heading span { font-size: 33.6px; }
   .module-directory-home { font-size: 26px; }
 }
 
