@@ -58,10 +58,10 @@ export default function ProductContentOperationsPage() {
 
         <section className="product-caseboards" aria-label="产品内容运营项目案例">
           <Layer number={984} x={300} y={2125} width={1286} alt="森愈品牌内容体系与短视频账号搭建" />
-          <a className="product-case-button" style={box(785, 3790, 350, 96)} href="#senyu-account">观看账号</a>
+          <a className="product-case-button" style={box(785, 3790, 350, 96)} href="https://www.suyueportfolio.me/森愈植物生态负氧离子/森愈视频补充.html#video-title">观看账号</a>
 
           <Layer number={985} x={292} y={4028} width={1285} alt="森愈 AIGC 产品宣传片" />
-          <a className="product-case-button" style={box(785, 4915, 350, 96)} href="#senyu-film">观看宣传片</a>
+          <a className="product-case-button" style={box(785, 4915, 350, 96)} href="https://www.suyueportfolio.me/森愈植物生态负氧离子/森愈视频补充.html#featured-title">观看宣传片</a>
 
           <Layer number={986} x={294} y={5137} width={1281} alt="森愈负氧离子释放仪详情页设计" />
           <Layer number={979} x={331} y={6149} width={1282} alt="吉林大米商城项目设计" />
@@ -83,10 +83,10 @@ export default function ProductContentOperationsPage() {
 
           <nav className="product-footer-nav" style={box(710, 15430, 1080, 925)} aria-label="页尾导航">
             <a href="/"><span>01</span>主页</a>
-            <a href="/#about"><span>02</span>关于我</a>
-            <a href="/#experience"><span>03</span>经历</a>
-            <a href="/#works"><span>04</span>作品集</a>
-            <a href="#contact"><span>05</span>联系我</a>
+            <a href="/#about-section"><span>02</span>关于我</a>
+            <a href="/#experience-section"><span>03</span>经历</a>
+            <a href="/#works-section"><span>04</span>作品集</a>
+            <a href="/#home-top"><span>05</span>联系我</a>
           </nav>
         </footer>
       </div>

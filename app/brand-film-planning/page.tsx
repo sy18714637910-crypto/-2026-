@@ -58,10 +58,10 @@ export default function BrandFilmPlanningPage() {
 
         <section className="brand-film-caseboards" aria-label="品牌影片策划项目案例">
           <Layer id="blue-whale" number={1062} x={268} y={2110} width={1363} alt="蓝鲸名人堂品牌影片策划案" />
-          <a className="brand-film-case-button" style={box(785, 8030, 350, 96)} href="#blue-whale">观看视频</a>
+          <a className="brand-film-case-button" style={box(785, 8030, 350, 96)} href="https://www.suyueportfolio.me/太保视频/视觉影像-蓝鲸名人堂.html">观看视频</a>
 
           <Layer id="civil-defense" number={1061} x={317} y={8417} width={1265} alt="上海民防战地救护系列科普视频策划案" />
-          <a className="brand-film-case-button" style={box(785, 11733, 350, 96)} href="#civil-defense">观看视频</a>
+          <a className="brand-film-case-button" style={box(785, 11733, 350, 96)} href="https://www.suyueportfolio.me/迈胜视频/迈胜视频.html">观看视频</a>
         </section>
 
         <ModuleDirectory style={box(60, 12000, 1801, 1220)} />
@@ -79,10 +79,10 @@ export default function BrandFilmPlanningPage() {
 
           <nav className="brand-film-footer-nav" style={box(710, 13750, 1080, 925)} aria-label="页尾导航">
             <a href="/"><span>01</span>主页</a>
-            <a href="/#about"><span>02</span>关于我</a>
-            <a href="/#experience"><span>03</span>经历</a>
-            <a href="/#works"><span>04</span>作品集</a>
-            <a href="#contact"><span>05</span>联系我</a>
+            <a href="/#about-section"><span>02</span>关于我</a>
+            <a href="/#experience-section"><span>03</span>经历</a>
+            <a href="/#works-section"><span>04</span>作品集</a>
+            <a href="/#home-top"><span>05</span>联系我</a>
           </nav>
         </footer>
       </div>

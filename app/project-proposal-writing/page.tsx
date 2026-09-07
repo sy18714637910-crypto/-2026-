@@ -79,10 +79,10 @@ export default function ProjectProposalWritingPage() {
 
           <nav className="proposal-footer-nav" style={box(710, 5350, 1080, 925)} aria-label="页尾导航">
             <a href="/"><span>01</span>主页</a>
-            <a href="/#about"><span>02</span>关于我</a>
-            <a href="/#experience"><span>03</span>经历</a>
-            <a href="/#works"><span>04</span>作品集</a>
-            <a href="#contact"><span>05</span>联系我</a>
+            <a href="/#about-section"><span>02</span>关于我</a>
+            <a href="/#experience-section"><span>03</span>经历</a>
+            <a href="/#works-section"><span>04</span>作品集</a>
+            <a href="/#home-top"><span>05</span>联系我</a>
           </nav>
         </footer>
       </div>
