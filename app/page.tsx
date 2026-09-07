@@ -108,7 +108,7 @@ export default function Home() {
             <Layer number={1116} x={1125} y={2341} width={274} alt="内容运营项目" />
             <Layer number={1114} x={1041} y={2547} width={300} alt="Beacon Tower 项目" />
           </div>
-          <a className="pill hero-button" style={box(787, 3060, 350, 95)} href="#about-section">了解我</a>
+          <a className="pill hero-button" style={box(787, 3060, 350, 95)} href="#about-title">了解我</a>
         </section>
 
         <Layer number={1108} x={-295} y={2956} width={2514} className="tear tear-one" />
