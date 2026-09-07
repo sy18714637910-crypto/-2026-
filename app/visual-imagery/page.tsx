@@ -44,6 +44,8 @@ function WatchButton({ y, canvasHeight, href }: { y: number; canvasHeight: numbe
 export default function VisualImageryPage() {
   return (
     <main className="visual-shell">
+      <link rel="stylesheet" href="/animations/footer-directory.css" />
+      <script src="/animations/footer-sticker.js" defer />
       <section className="visual-canvas visual-part-one" aria-labelledby="visual-imagery-title">
         <header className="visual-header">
           <a className="visual-brand" href="/" aria-label="返回主页">SUYUE</a>
@@ -82,23 +84,25 @@ export default function VisualImageryPage() {
 
         <ModuleDirectory style={box(60, 3450, 1801, PART_TWO_HEIGHT, 1220)} />
 
-        <footer id="contact" className="visual-footer">
+        <footer id="contact" className="visual-footer footer-sticker" data-footer-sticker>
           <Layer number={948} x={48} y={5025} width={226} canvasHeight={PART_TWO_HEIGHT} className="visual-footer-wordmark" alt="SU YUE" />
           <div className="visual-footer-actions" style={box(1640, 5027, 235, PART_TWO_HEIGHT, 65)}>
             <button type="button" aria-label="打开导航菜单">≡</button>
             <a href="#contact">联系我</a>
           </div>
 
-          <Layer number={949} x={-610} y={4890} width={1801} canvasHeight={PART_TWO_HEIGHT} className="visual-footer-face" alt="苏越肖像" />
-          <Layer number={946} x={320} y={5110} width={313} canvasHeight={PART_TWO_HEIGHT} className="visual-footer-bubble" />
-          <Layer number={945} x={355} y={5142} width={239} canvasHeight={PART_TWO_HEIGHT} className="visual-footer-bubble-copy" alt="这么快就走了？" />
+          <div className="footer-sticker__reveal" style={{ '--sticker-clip-start': 5.4 } as CSSProperties} aria-hidden="true">
+            <Layer number={949} x={-610} y={4890} width={1801} canvasHeight={PART_TWO_HEIGHT} className="visual-footer-face" alt="苏越肖像" />
+            <Layer number={946} x={320} y={5110} width={313} canvasHeight={PART_TWO_HEIGHT} className="visual-footer-bubble" />
+            <Layer number={945} x={355} y={5142} width={239} canvasHeight={PART_TWO_HEIGHT} className="visual-footer-bubble-copy" alt="这么快就走了？" />
+          </div>
 
-          <nav className="visual-footer-nav" style={box(710, 5100, 1080, PART_TWO_HEIGHT, 925)} aria-label="页尾导航">
-            <a href="/"><span>01</span>主页</a>
-            <a href="/#about-section"><span>02</span>关于我</a>
-            <a href="/#experience-section"><span>03</span>经历</a>
-            <a href="/#works-section"><span>04</span>作品集</a>
-            <a href="/#home-top"><span>05</span>联系我</a>
+          <nav className="visual-footer-nav footer-directory" style={box(710, 5100, 1080, PART_TWO_HEIGHT, 925)} aria-label="页尾导航">
+            <a className="footer-directory__item" style={{ '--asset-left': '38%', '--asset-top': '-90%', '--asset-width': '42%', '--asset-from-x': '0px', '--asset-from-y': '-28px', '--asset-rotation': '-2deg', '--asset-duration': '320ms', '--float-duration': '2.4s' } as CSSProperties} href="/"><img className="footer-directory__background" src="/assets/footer-directory/资源 42.png" alt="" /><span className="footer-directory__number">01</span><span className="footer-directory__label">主页</span><span className="footer-directory__asset-entry"><img className="footer-directory__asset-float" src="/assets/footer-directory/资源 40.png" alt="" /></span></a>
+            <a className="footer-directory__item" style={{ '--asset-left': '40%', '--asset-top': '-70%', '--asset-width': '48%', '--asset-from-x': '36px', '--asset-from-y': '0px', '--asset-rotation': '2deg', '--asset-duration': '380ms', '--float-duration': '2.8s' } as CSSProperties} href="/#about-section"><img className="footer-directory__background" src="/assets/footer-directory/资源 43.png" alt="" /><span className="footer-directory__number">02</span><span className="footer-directory__label">关于我</span><span className="footer-directory__asset-entry"><img className="footer-directory__asset-float" src="/assets/footer-directory/资源 34.png" alt="" /></span></a>
+            <a className="footer-directory__item" style={{ '--asset-left': '43%', '--asset-top': '-55%', '--asset-width': '42%', '--asset-from-x': '28px', '--asset-from-y': '18px', '--asset-rotation': '-2deg', '--asset-duration': '340ms', '--float-duration': '2.3s' } as CSSProperties} href="/#experience-section"><img className="footer-directory__background" src="/assets/footer-directory/资源 44.png" alt="" /><span className="footer-directory__number">03</span><span className="footer-directory__label">经历</span><span className="footer-directory__asset-entry"><img className="footer-directory__asset-float" src="/assets/footer-directory/资源 33.png" alt="" /></span></a>
+            <a className="footer-directory__item" style={{ '--asset-left': '46%', '--asset-top': '-60%', '--asset-width': '34%', '--asset-from-x': '0px', '--asset-from-y': '30px', '--asset-rotation': '2deg', '--asset-duration': '370ms', '--float-duration': '2.7s' } as CSSProperties} href="/#works-section"><img className="footer-directory__background" src="/assets/footer-directory/资源 45.png" alt="" /><span className="footer-directory__number">04</span><span className="footer-directory__label">作品集</span><span className="footer-directory__asset-entry"><img className="footer-directory__asset-float" src="/assets/footer-directory/资源 32.png" alt="" /></span></a>
+            <a className="footer-directory__item" style={{ '--asset-left': '44%', '--asset-top': '-65%', '--asset-width': '34%', '--asset-from-x': '24px', '--asset-from-y': '-18px', '--asset-rotation': '-2deg', '--asset-duration': '350ms', '--float-duration': '2.5s' } as CSSProperties} href="/#home-top"><img className="footer-directory__background" src="/assets/footer-directory/资源 46.png" alt="" /><span className="footer-directory__number">05</span><span className="footer-directory__label">联系我</span><span className="footer-directory__asset-entry"><img className="footer-directory__asset-float" src="/assets/footer-directory/资源 31.png" alt="" /></span></a>
           </nav>
         </footer>
       </section>
