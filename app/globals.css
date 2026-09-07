@@ -8,6 +8,27 @@
 }
 
 * { box-sizing: border-box; }
+
+.supplement-page { min-height: 100vh; background: #202543; color: #f8f5ef; padding: 38px 5vw 80px; }
+.supplement-header { display: flex; align-items: center; justify-content: space-between; max-width: 1440px; margin: 0 auto; }
+.supplement-brand { color: #ff91b2; font-size: 28px; font-weight: 800; text-decoration: none; }
+.supplement-contact { color: #202543; background: #fffdf8; border-radius: 999px; padding: 12px 22px; text-decoration: none; }
+.supplement-hero { max-width: 1440px; margin: 110px auto 70px; }
+.supplement-hero p { color: #ff91b2; letter-spacing: .16em; font-size: 13px; }
+.supplement-hero h1 { max-width: 850px; margin: 18px 0; font-size: clamp(48px, 8vw, 120px); line-height: .98; letter-spacing: -.04em; }
+.supplement-rule { height: 1px; max-width: 740px; background: rgba(255,255,255,.35); margin: 28px 0; }
+.supplement-hero span { color: rgba(248,245,239,.7); font-size: 18px; }
+.supplement-grid { max-width: 1440px; margin: 0 auto; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 38px; }
+.supplement-video-card { border-top: 1px solid rgba(255,255,255,.35); padding-top: 18px; }
+.supplement-video-frame { background: #111426; aspect-ratio: 16 / 9; overflow: hidden; }
+.supplement-video-frame video { display: block; width: 100%; height: 100%; object-fit: contain; }
+.supplement-video-meta { display: flex; justify-content: space-between; gap: 20px; padding-top: 16px; }
+.supplement-video-meta small { color: #ff91b2; }
+.supplement-video-meta h2 { margin: 8px 0 0; font-size: 24px; }
+.supplement-video-meta span { color: rgba(248,245,239,.65); font-size: 13px; text-align: right; }
+.supplement-footer { max-width: 1440px; margin: 90px auto 0; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.35); display: flex; flex-wrap: wrap; gap: 24px; }
+.supplement-footer a { color: #f8f5ef; text-decoration: none; }
+@media (max-width: 760px) { .supplement-page { padding: 24px 22px 56px; } .supplement-hero { margin-top: 72px; } .supplement-grid { grid-template-columns: 1fr; gap: 28px; } .supplement-video-meta { display: block; } .supplement-video-meta span { display: block; margin-top: 10px; text-align: left; } }
 html { background: var(--navy); scroll-behavior: auto; }
 body {
   margin: 0;

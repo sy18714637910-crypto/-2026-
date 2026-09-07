@@ -60,10 +60,10 @@ export default function BrandFilmPlanningPage() {
 
         <section className="brand-film-caseboards" aria-label="品牌影片策划项目案例">
           <Layer id="blue-whale" number={1062} x={268} y={2110} width={1363} alt="蓝鲸名人堂品牌影片策划案" />
-          <a className="brand-film-case-button" style={box(785, 8030, 350, 96)} href="https://www.suyueportfolio.me/太保视频/视觉影像-蓝鲸名人堂.html">观看视频</a>
+          <a className="brand-film-case-button" style={box(785, 8030, 350, 96)} href="/brand-film-video">观看视频</a>
 
           <Layer id="civil-defense" number={1061} x={317} y={8417} width={1265} alt="上海民防战地救护系列科普视频策划案" />
-          <a className="brand-film-case-button" style={box(785, 11733, 350, 96)} href="https://www.suyueportfolio.me/迈胜视频/迈胜视频.html">观看视频</a>
+          <a className="brand-film-case-button" style={box(785, 11733, 350, 96)} href="/maisheng-video">观看视频</a>
         </section>
 
         <ModuleDirectory style={box(60, 12000, 1801, 1220)} />

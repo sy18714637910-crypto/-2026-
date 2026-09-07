@@ -67,18 +67,18 @@ export default function VisualImageryPage() {
           <Layer number={960} x={320} y={10300} width={1281} canvasHeight={PART_ONE_HEIGHT} alt="海报与展板视觉设计" />
           <Layer number={961} x={54} y={11290} width={1788} canvasHeight={PART_ONE_HEIGHT} alt="黎族姑娘海南文创设计" />
           <Layer number={957} x={320} y={13593} width={1281} canvasHeight={PART_ONE_HEIGHT} alt="剪辑人生视觉影像项目" />
-          <WatchButton y={14510} canvasHeight={PART_ONE_HEIGHT} href="https://www.suyueportfolio.me/视觉影像补充视频/index.html#editing-life" />
+          <WatchButton y={14510} canvasHeight={PART_ONE_HEIGHT} href="/visual-video#editing-life" />
           <Layer number={956} x={320} y={14693} width={1281} canvasHeight={PART_ONE_HEIGHT} alt="婚礼日视觉影像项目" />
-          <WatchButton y={15571} canvasHeight={PART_ONE_HEIGHT} href="https://www.suyueportfolio.me/视觉影像补充视频/index.html#wedding-day" />
+          <WatchButton y={15571} canvasHeight={PART_ONE_HEIGHT} href="/visual-video#wedding-day" />
         </section>
       </section>
 
       <section className="visual-canvas visual-part-two" aria-label="视觉影像项目案例第二部分">
         <section className="visual-caseboards" aria-label="视觉影像项目案例第二部分内容">
           <Layer number={955} x={320} y={80} width={1281} canvasHeight={PART_TWO_HEIGHT} alt="强风吹拂混剪作品" />
-          <WatchButton y={1044} canvasHeight={PART_TWO_HEIGHT} href="https://www.suyueportfolio.me/视觉影像补充视频/index.html#strong-wind" />
+          <WatchButton y={1044} canvasHeight={PART_TWO_HEIGHT} href="/visual-video#strong-wind" />
           <Layer number={950} x={320} y={1312} width={1287} canvasHeight={PART_TWO_HEIGHT} alt="圆月 MG 动画作品" />
-          <WatchButton y={2242} canvasHeight={PART_TWO_HEIGHT} href="https://www.suyueportfolio.me/视觉影像补充视频/index.html#full-moon" />
+          <WatchButton y={2242} canvasHeight={PART_TWO_HEIGHT} href="/visual-video#full-moon" />
           <Layer number={958} x={320} y={2527} width={1281} canvasHeight={PART_TWO_HEIGHT} alt="移动端页面视觉设计" />
         </section>
 
