@@ -151,7 +151,7 @@ export default function Home() {
             <WorkCard number={1091} x={1274} y={8685} width={577} layer={21} href="/project-proposal-writing" label="项目方案撰写" />
             <WorkCard number={1090} x={598} y={8965} width={771} layer={22} href="/visual-imagery" label="视觉影像制作" />
           </div>
-          <a className="pill works-button" style={box(715, 9500, 494, 95)} href="#site-footer">点击了解项目作品</a>
+          <span className="pill works-button" style={box(715, 9500, 494, 95)} aria-label="点击了解项目作品">点击了解项目作品</span>
         </section>
 
         <footer id="site-footer" className="site-footer footer-sticker" data-footer-sticker>
