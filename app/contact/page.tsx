@@ -15,9 +15,9 @@ export default function ContactPage() {
   return (
     <main className="contact-page-shell">
       <header className="contact-page-header">
-        <a className="contact-page-logo" href="/" aria-label="返回主页">SUYUE</a>
+        <a className="contact-page-logo" href="/#home-top" aria-label="返回主页">SUYUE</a>
         <div className="contact-page-actions">
-          <a className="contact-menu-button" href="/" aria-label="返回主页">≡</a>
+          <a className="contact-menu-button" href="/#home-top" aria-label="返回主页">≡</a>
           <span className="contact-page-pill">联系我</span>
         </div>
       </header>
@@ -40,7 +40,7 @@ export default function ContactPage() {
       </section>
 
       <footer className="contact-page-footer">
-        <a href="/">返回主页</a>
+        <a href="/#home-top">返回主页</a>
         <span>SU YUE · BRAND PLANNING &amp; CONTENT CREATION</span>
       </footer>
     </main>
