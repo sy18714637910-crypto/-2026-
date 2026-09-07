@@ -54,6 +54,7 @@ button { font: inherit; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 .about-background { z-index: 1; }
 .hero-section, .about-section, .works-section, .site-footer { position: static; }
+.works-section-anchor { position: absolute; height: 1px; pointer-events: none; }
 
 .hero-title-motion { position: absolute; z-index: 2; transform: translate3d(0, var(--hero-title-scroll-y, 0px), 0); will-change: transform; }
 .hero-title-motion .hero-wordmark { inset: 0; width: 100%; }

@@ -139,7 +139,8 @@ export default function Home() {
         </section>
 
         <Layer number={1109} x={-277} y={6589} width={2479} className="tear tear-two" />
-        <section id="works-section" className="works-section" aria-labelledby="works-title">
+        <span id="works-section" className="works-section-anchor" style={box(0, 8390, 1)} aria-hidden="true" />
+        <section className="works-section" aria-labelledby="works-title">
           <TextBox x={380} y={7640} width={1165} className="works-intro">
             <h2 id="works-title">从内容到产品，从想法到画面。<br />每一件事都在回答同一个问题：<br /><span>用户在想什么？</span></h2>
           </TextBox>
