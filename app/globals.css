@@ -314,9 +314,89 @@ button { font: inherit; }
 .product-footer-actions button { width: 28%; }
 .product-header-actions a,
 .product-footer-actions a { width: 55%; }
+.product-header-actions button,
+.product-header-actions a,
+.product-footer-actions button,
+.product-footer-actions a,
+.product-case-button,
+.brand-film-header-actions button,
+.brand-film-header-actions a,
+.brand-film-footer-actions button,
+.brand-film-footer-actions a,
+.brand-film-case-button,
+.proposal-header-actions button,
+.proposal-header-actions a,
+.proposal-footer-actions button,
+.proposal-footer-actions a,
+.visual-header-actions button,
+.visual-header-actions a,
+.visual-footer-actions button,
+.visual-footer-actions a,
+.visual-watch-button { transition: background-color 220ms ease; }
+.product-header-actions button:hover,
+.product-header-actions a:hover,
+.product-footer-actions button:hover,
+.product-footer-actions a:hover,
+.product-case-button:hover,
+.brand-film-header-actions button:hover,
+.brand-film-header-actions a:hover,
+.brand-film-footer-actions button:hover,
+.brand-film-footer-actions a:hover,
+.brand-film-case-button:hover,
+.proposal-header-actions button:hover,
+.proposal-header-actions a:hover,
+.proposal-footer-actions button:hover,
+.proposal-footer-actions a:hover,
+.visual-header-actions button:hover,
+.visual-header-actions a:hover,
+.visual-footer-actions button:hover,
+.visual-footer-actions a:hover,
+.visual-watch-button:hover { background-color: var(--pink); }
 .product-title-top { z-index: 3; }
 .product-hero-object { z-index: 4; }
 .product-title-bottom { z-index: 5; }
+.product-title-top,
+.product-title-bottom,
+.brand-film-title-top,
+.brand-film-title-bottom,
+.proposal-title-top,
+.proposal-title-bottom,
+.visual-title-top,
+.visual-title-bottom {
+  animation: module-title-enter 650ms cubic-bezier(.22,.8,.28,1) .08s both;
+}
+.product-hero-object,
+.brand-film-hero-object,
+.proposal-hero-object,
+.visual-hero-object {
+  animation: module-icon-enter 720ms cubic-bezier(.22,.8,.28,1) .72s both;
+}
+@keyframes module-title-enter {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes module-icon-enter {
+  from { opacity: 0; transform: translateY(14px) scale(.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .product-title-top,
+  .product-title-bottom,
+  .product-hero-object,
+  .brand-film-title-top,
+  .brand-film-title-bottom,
+  .brand-film-hero-object,
+  .proposal-title-top,
+  .proposal-title-bottom,
+  .proposal-hero-object,
+  .visual-title-top,
+  .visual-title-bottom,
+  .visual-hero-object {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
 .product-detail-tear { z-index: 6; }
 .product-caseboards .product-layer { z-index: 8; }
 .product-case-button {

@@ -1,0 +1,301 @@
+/* Homepage opening: Canvas and resources 1121-1126 share one 1920 x 1080 stage. */
+@font-face {
+  font-family: "SUYUE Source Han";
+  src:
+    local("Source Han Sans SC Medium"),
+    local("思源黑体 Medium"),
+    local("Source Han Sans CN Medium"),
+    local("Source Han Sans SC");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+:root {
+  /* One scale for the complete character package: face, opening frames and head props. */
+  --hero-character-scale: 1.3;
+}
+
+@font-face {
+  font-family: "SUYUE Source Han";
+  src:
+    local("Source Han Sans SC Bold"),
+    local("思源黑体 Bold"),
+    local("Source Han Sans CN Bold"),
+    local("Source Han Sans SC");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+.hero-section .hero-copy {
+  font-family:
+    "SUYUE Source Han",
+    "Source Han Sans SC",
+    "Noto Sans SC",
+    "Microsoft YaHei",
+    sans-serif;
+  font-weight: 500;
+}
+
+.hero-section .hero-copy span { font-weight: 700; }
+
+.hero-section .hero-stage {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  width: 99.74025974%;
+  aspect-ratio: 16 / 9;
+  overflow: visible;
+  pointer-events: none;
+  user-select: none;
+}
+
+.hero-section .hero-sequence-canvas,
+.hero-section .hero-final-layers {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-section .hero-sequence-canvas {
+  z-index: 8;
+  opacity: 0;
+  transform: translate3d(0, 105%, 0) scale(var(--hero-character-scale));
+  transform-origin: 50% 100%;
+}
+
+.hero-section .hero-final-layers {
+  /* Calibrated against hero-opening-10.webp as one indivisible group. */
+  --hero-final-scale: 0.946503;
+  --hero-final-x: 1.374923%;
+  --hero-final-y: 1.467594%;
+  z-index: 9;
+  opacity: 1;
+  transform:
+    translate3d(var(--hero-final-x), var(--hero-final-y), 0)
+    scale(calc(var(--hero-final-scale) * var(--hero-character-scale)));
+  transform-origin: 50% 100%;
+}
+
+.hero-section .hero-stage__layer {
+  position: absolute;
+  display: block;
+  height: auto;
+  max-width: none;
+  pointer-events: none;
+  user-select: none;
+}
+
+.hero-section .hero-stage__film { z-index: 3; left: 26.5625%; top: 26.388889%; width: 28.229167%; }
+.hero-section .hero-stage__panel { z-index: 4; left: 46.71875%; top: 24.351852%; width: 30.416667%; }
+.hero-section .hero-stage__board { z-index: 5; left: 35.15625%; top: 33.518519%; width: 22.916667%; }
+.hero-section .hero-stage__notebook { z-index: 6; left: 45.9375%; top: 43.703704%; width: 17.8125%; }
+.hero-section .hero-stage__camera { z-index: 7; left: 38.020833%; top: 17.777778%; width: 26.770833%; }
+/* The face artwork has transparent margins, so the outer tracker is intentionally
+   wider than the visible face. Its base width stays in the shared stage system;
+   --hero-character-scale enlarges it together with the props and Canvas frames. */
+.hero-section .hero-stage__face { z-index: 8; left: 11.041667%; top: 26.296296%; width: 78.229167%; }
+
+.hero-section .hero-face-tracker {
+  aspect-ratio: 4 / 3;
+  overflow: visible;
+  isolation: isolate;
+}
+
+.hero-section .hero-face-state {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: contain;
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+  transition: none !important;
+}
+
+.hero-section .hero-face-state.is-active { opacity: 1; }
+
+/* The static HTML remains the no-JS and load-failure fallback. */
+.hero-intro-running .hero-section .hero-final-layers,
+.hero-intro-running .hero-section .hero-wordmark,
+.hero-intro-running .hero-section .hero-copy__line,
+.hero-intro-running .hero-section .hero-project-thumb,
+.hero-intro-running .hero-section .hero-button { opacity: 0; }
+
+.hero-intro-running .hero-section .hero-wordmark { clip-path: inset(0 0 100% 0); }
+
+.hero-intro-running .hero-section .hero-copy__line {
+  display: block;
+  clip-path: inset(0 0 100% 0);
+  transform: translate3d(0, 0.34em, 0);
+}
+
+.hero-intro-running .hero-section .hero-project-thumb {
+  transform: translate3d(0, 14px, 0) scale(0.975);
+  transform-origin: 50% 60%;
+}
+
+.hero-intro-running .hero-section .hero-button { transform: translate3d(0, 10px, 0); }
+
+.hero-intro-running .hero-section .hero-sequence-canvas.is-rising {
+  opacity: 1;
+  animation: hero-person-rise 800ms cubic-bezier(0.22, 0.76, 0.25, 1) both;
+}
+
+.hero-intro-running .hero-section .hero-wordmark.is-revealed {
+  opacity: 1;
+  clip-path: inset(0 0 0 0);
+  transition:
+    opacity 260ms ease-out,
+    clip-path 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-intro-running .hero-section .hero-stage.is-crossfading .hero-sequence-canvas {
+  opacity: 0;
+  transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-intro-running .hero-section .hero-stage.is-crossfading .hero-final-layers {
+  opacity: 1;
+  transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-intro-running .hero-section .hero-copy__line.is-revealed {
+  opacity: 1;
+  clip-path: inset(0 0 0 0);
+  transform: translate3d(0, 0, 0);
+  transition:
+    opacity 220ms ease-out,
+    clip-path 400ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-intro-running .hero-section .hero-project-thumb.is-revealed {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+  transition:
+    opacity 220ms ease-out,
+    transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Scroll-entry float for the Hero project collage. Keep the amplitude small so
+   the collage stays anchored while gaining a little physical presence. */
+html:not(.hero-intro-running) .hero-section.is-scroll-floating .hero-project-thumb {
+  animation: none;
+  transform: translate3d(var(--hero-scroll-x, 0px), var(--hero-scroll-y, 0px), 0);
+}
+
+html:not(.hero-intro-running) .hero-section.is-scroll-floating .hero-stage__camera {
+  animation: none;
+  transform: translate3d(var(--hero-scroll-x, 0px), var(--hero-scroll-y, 0px), 0);
+}
+
+html:not(.hero-intro-running) .hero-section.is-scroll-floating .hero-stage__film,
+html:not(.hero-intro-running) .hero-section.is-scroll-floating .hero-stage__panel {
+  animation: none;
+  transform: translate3d(var(--hero-scroll-x, 0px), var(--hero-scroll-y, 0px), 0);
+}
+
+html:not(.hero-intro-running) .hero-section.is-scroll-floating .hero-stage__notebook {
+  animation: none;
+  transform: translate3d(var(--hero-scroll-x, 0px), var(--hero-scroll-y, 0px), 0);
+}
+
+.hero-intro-running .hero-section .hero-button.is-revealed {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition:
+    opacity 220ms ease-out,
+    transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-section .hero-button {
+  transition:
+    background-color 220ms ease,
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 220ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hero-section .hero-button:hover {
+    background-color: var(--pink);
+    transform: translate3d(0, -3px, 0) scale(1.025);
+    filter: drop-shadow(0 10px 14px rgba(0, 0, 0, .14));
+  }
+
+  .hero-section .hero-button:active {
+    transform: translate3d(0, 0, 0) scale(.985);
+  }
+}
+
+.hero-section .hero-final-layers.is-settled .hero-stage__film,
+.hero-section .hero-final-layers.is-settled .hero-stage__board,
+.hero-section .hero-final-layers.is-settled .hero-stage__panel,
+.hero-section .hero-final-layers.is-settled .hero-stage__notebook,
+.hero-section .hero-final-layers.is-settled .hero-stage__camera {
+  animation: none;
+}
+
+
+@keyframes hero-person-rise {
+  0% { transform: translate3d(0, 105%, 0) scale(var(--hero-character-scale)); }
+  72% { transform: translate3d(0, -1.2%, 0) scale(var(--hero-character-scale)); }
+  86% { transform: translate3d(0, 0.4%, 0) scale(var(--hero-character-scale)); }
+  100% { transform: translate3d(0, 0, 0) scale(var(--hero-character-scale)); }
+}
+
+@media (max-width: 767px) {
+  :root { --hero-character-scale: 1.06; }
+
+  .hero-intro-running .hero-section .hero-project-thumb {
+    transform: translate3d(0, 8px, 0) scale(0.985);
+  }
+
+  html:not(.hero-intro-running) .hero-section.is-scroll-floating .hero-project-thumb {
+    animation: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:not(.hero-intro-running) .hero-section.is-scroll-floating .hero-project-thumb {
+    animation: none !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  :root { --hero-character-scale: 1.14; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-section .hero-sequence-canvas { display: none; }
+
+  .hero-section .hero-final-layers,
+  .hero-section .hero-wordmark,
+  .hero-section .hero-copy__line,
+  .hero-section .hero-project-thumb,
+  .hero-section .hero-button {
+    opacity: 1 !important;
+    clip-path: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .hero-section .hero-final-layers {
+    transform:
+      translate3d(var(--hero-final-x), var(--hero-final-y), 0)
+      scale(calc(var(--hero-final-scale) * var(--hero-character-scale))) !important;
+  }
+
+  .hero-section .hero-copy__line,
+  .hero-section .hero-project-thumb,
+  .hero-section .hero-button { transform: none !important; }
+
+  .hero-section .hero-face-state { transition: none !important; }
+}
