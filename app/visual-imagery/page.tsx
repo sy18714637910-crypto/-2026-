@@ -1,4 +1,5 @@
-import type { CSSProperties, Metadata } from 'next';
+import type { Metadata } from 'next';
+import type { CSSProperties } from 'react';
 import ModuleDirectory from '../components/module-directory';
 
 const DESIGN_WIDTH = 1921;
