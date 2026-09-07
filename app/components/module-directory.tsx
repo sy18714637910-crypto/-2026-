@@ -1,5 +1,4 @@
 import type { CSSProperties } from 'react';
-import Link from 'next/link';
 
 type ModuleDirectoryProps = { style: CSSProperties };
 
@@ -34,7 +33,7 @@ export default function ModuleDirectory({ style }: ModuleDirectoryProps) {
       />
       <nav className="module-directory-cards" aria-label="切换作品模块">
         {modules.map((item) => (
-          <Link
+          <a
             key={item.href}
             className="work-card module-directory-card"
             style={{ ...directoryBox(item.x, item.y, item.width), '--card-layer': item.layer } as CSSProperties}
@@ -42,16 +41,16 @@ export default function ModuleDirectory({ style }: ModuleDirectoryProps) {
             aria-label={`查看${item.title.slice(3)}作品`}
           >
             <img src={`/assets/home/资源 ${item.image}.png`} alt={item.title} />
-          </Link>
+          </a>
         ))}
       </nav>
-      <Link
+      <a
         className="pill module-directory-home"
         style={directoryBox(655, 1110, 494, 95)}
         href="/#site-footer"
       >
         点击了解项目作品
-      </Link>
+      </a>
     </section>
   );
 }
