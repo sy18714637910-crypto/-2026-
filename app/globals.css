@@ -209,38 +209,17 @@ button { font: inherit; }
 .module-directory-mark {
   position: absolute;
   z-index: 18;
-  left: 0;
-  top: 0;
-  width: 14.492%;
   max-width: none;
   height: auto;
 }
 .module-directory-cards { position: absolute; inset: 0; }
 .module-directory-card { z-index: var(--card-layer, 19); }
 .module-directory-home {
-  position: absolute;
-  z-index: 4;
-  bottom: 0;
-  left: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 3.2em;
-  padding: 0 2.3em;
-  border-radius: 999px;
-  background: var(--paper);
-  color: #111;
-  font-size: 1.35vw;
-  font-weight: 700;
-  transform: translateX(-50%);
+  z-index: 20;
   transition: transform .2s ease, background-color .2s ease;
 }
 .module-directory-home:hover,
-.module-directory-home:focus-visible { background: var(--pink); outline: none; transform: translateX(-50%) translateY(-3px); }
-
-@media (min-width: 1921px) {
-  .module-directory-home { font-size: 26px; }
-}
+.module-directory-home:focus-visible { background: var(--pink); outline: 3px solid var(--pink); outline-offset: 6px; transform: translateY(-3px); }
 
 @media (min-width: 1925px) {
   .page-shell { width: 1925px; margin-inline: auto; }

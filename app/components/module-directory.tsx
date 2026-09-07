@@ -6,11 +6,12 @@ type ModuleDirectoryProps = { style: CSSProperties };
 const DIRECTORY_WIDTH = 1801;
 const DIRECTORY_HEIGHT = 1220;
 
-function directoryBox(x: number, y: number, width: number): CSSProperties {
+function directoryBox(x: number, y: number, width: number, height?: number): CSSProperties {
   return {
     left: `${(x / DIRECTORY_WIDTH) * 100}%`,
     top: `${(y / DIRECTORY_HEIGHT) * 100}%`,
     width: `${(width / DIRECTORY_WIDTH) * 100}%`,
+    ...(height ? { height: `${(height / DIRECTORY_HEIGHT) * 100}%` } : {}),
   };
 }
 
@@ -26,6 +27,7 @@ export default function ModuleDirectory({ style }: ModuleDirectoryProps) {
     <section id="module-directory" className="module-directory" style={style} aria-labelledby="module-directory-title">
       <img
         className="module-directory-mark"
+        style={directoryBox(15, 0, 261)}
         src="/assets/home/资源 1095.png"
         alt="我的作品 MY WORKS"
         id="module-directory-title"
@@ -43,7 +45,13 @@ export default function ModuleDirectory({ style }: ModuleDirectoryProps) {
           </Link>
         ))}
       </nav>
-      <Link className="module-directory-home" href="/#site-footer">点击了解项目作品</Link>
+      <Link
+        className="pill module-directory-home"
+        style={directoryBox(655, 1110, 494, 95)}
+        href="/#site-footer"
+      >
+        点击了解项目作品
+      </Link>
     </section>
   );
 }
