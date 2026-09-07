@@ -205,7 +205,11 @@ button { font: inherit; }
 .footer-nav span { color: #697398; font-size: 1.05vw; font-weight: 400; }
 
 /* Shared cross-page work directory; it reuses the homepage's exact card geometry. */
-.module-directory { position: absolute; z-index: 30; }
+.module-directory {
+  position: absolute;
+  z-index: 30;
+  background: var(--navy);
+}
 .module-directory-mark {
   position: absolute;
   z-index: 18;
