@@ -1,7 +1,8 @@
 import type { CSSProperties, Metadata } from 'next';
+import ModuleDirectory from '../components/module-directory';
 
 const DESIGN_WIDTH = 1921;
-const DESIGN_HEIGHT = 13284;
+const DESIGN_HEIGHT = 14750;
 
 export const metadata: Metadata = {
   title: '品牌影片策划｜SU YUE',
@@ -63,18 +64,20 @@ export default function BrandFilmPlanningPage() {
           <a className="brand-film-case-button" style={box(785, 11733, 350, 96)} href="#civil-defense">观看视频</a>
         </section>
 
+        <ModuleDirectory style={box(60, 12000, 1801, 1220)} />
+
         <footer id="contact" className="brand-film-footer">
-          <Layer number={1033} x={50} y={12200} width={229} className="brand-film-footer-wordmark" alt="SU YUE" />
-          <div className="brand-film-footer-actions" style={box(1640, 12205, 235, 65)}>
+          <Layer number={1033} x={50} y={13600} width={229} className="brand-film-footer-wordmark" alt="SU YUE" />
+          <div className="brand-film-footer-actions" style={box(1640, 13605, 235, 65)}>
             <button type="button" aria-label="打开导航菜单">≡</button>
             <a href="#contact">联系我</a>
           </div>
 
-          <Layer number={1034} x={-610} y={12250} width={1800} className="brand-film-footer-face" alt="苏越肖像" />
-          <Layer number={1031} x={320} y={12420} width={313} className="brand-film-footer-bubble" />
-          <Layer number={1030} x={355} y={12452} width={239} className="brand-film-footer-bubble-copy" alt="这么快就走了？" />
+          <Layer number={1034} x={-610} y={13650} width={1800} className="brand-film-footer-face" alt="苏越肖像" />
+          <Layer number={1031} x={320} y={13820} width={313} className="brand-film-footer-bubble" />
+          <Layer number={1030} x={355} y={13852} width={239} className="brand-film-footer-bubble-copy" alt="这么快就走了？" />
 
-          <nav className="brand-film-footer-nav" style={box(710, 12350, 1080, 925)} aria-label="页尾导航">
+          <nav className="brand-film-footer-nav" style={box(710, 13750, 1080, 925)} aria-label="页尾导航">
             <a href="/"><span>01</span>主页</a>
             <a href="/#about"><span>02</span>关于我</a>
             <a href="/#experience"><span>03</span>经历</a>

@@ -1,7 +1,8 @@
 import type { CSSProperties, Metadata } from 'next';
+import ModuleDirectory from '../components/module-directory';
 
 const DESIGN_WIDTH = 1921;
-const DESIGN_HEIGHT = 5114;
+const DESIGN_HEIGHT = 6500;
 
 export const metadata: Metadata = {
   title: '项目方案撰写｜SU YUE',
@@ -63,18 +64,20 @@ export default function ProjectProposalWritingPage() {
           <Layer number={966} x={400} y={3195} width={1125} className="proposal-second-content" alt="闵联40周年访谈纪录片策划展板" />
         </section>
 
+        <ModuleDirectory style={box(60, 3820, 1801, 1220)} />
+
         <footer id="contact" className="proposal-footer">
-          <Layer number={1007} x={81} y={4023} width={229} className="proposal-footer-wordmark" alt="SU YUE" />
-          <div className="proposal-footer-actions" style={box(1640, 4025, 235, 65)}>
+          <Layer number={1007} x={81} y={5270} width={229} className="proposal-footer-wordmark" alt="SU YUE" />
+          <div className="proposal-footer-actions" style={box(1640, 5272, 235, 65)}>
             <button type="button" aria-label="打开导航菜单">≡</button>
             <a href="#contact">联系我</a>
           </div>
 
-          <Layer number={1008} x={-610} y={3890} width={1800} className="proposal-footer-face" alt="苏越肖像" />
-          <Layer number={1005} x={320} y={4110} width={313} className="proposal-footer-bubble" />
-          <Layer number={1004} x={355} y={4142} width={239} className="proposal-footer-bubble-copy" alt="这么快就走了？" />
+          <Layer number={1008} x={-610} y={5140} width={1800} className="proposal-footer-face" alt="苏越肖像" />
+          <Layer number={1005} x={320} y={5360} width={313} className="proposal-footer-bubble" />
+          <Layer number={1004} x={355} y={5392} width={239} className="proposal-footer-bubble-copy" alt="这么快就走了？" />
 
-          <nav className="proposal-footer-nav" style={box(710, 4100, 1080, 925)} aria-label="页尾导航">
+          <nav className="proposal-footer-nav" style={box(710, 5350, 1080, 925)} aria-label="页尾导航">
             <a href="/"><span>01</span>主页</a>
             <a href="/#about"><span>02</span>关于我</a>
             <a href="/#experience"><span>03</span>经历</a>

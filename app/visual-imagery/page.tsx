@@ -1,8 +1,9 @@
 import type { CSSProperties, Metadata } from 'next';
+import ModuleDirectory from '../components/module-directory';
 
 const DESIGN_WIDTH = 1921;
 const PART_ONE_HEIGHT = 15951;
-const PART_TWO_HEIGHT = 4822;
+const PART_TWO_HEIGHT = 6200;
 
 export const metadata: Metadata = {
   title: '视觉影像｜SU YUE',
@@ -79,18 +80,20 @@ export default function VisualImageryPage() {
           <Layer number={958} x={320} y={2527} width={1281} canvasHeight={PART_TWO_HEIGHT} alt="移动端页面视觉设计" />
         </section>
 
+        <ModuleDirectory style={box(60, 3250, 1801, PART_TWO_HEIGHT, 1220)} />
+
         <footer id="contact" className="visual-footer">
-          <Layer number={948} x={48} y={3728} width={226} canvasHeight={PART_TWO_HEIGHT} className="visual-footer-wordmark" alt="SU YUE" />
-          <div className="visual-footer-actions" style={box(1640, 3730, 235, PART_TWO_HEIGHT, 65)}>
+          <Layer number={948} x={48} y={5025} width={226} canvasHeight={PART_TWO_HEIGHT} className="visual-footer-wordmark" alt="SU YUE" />
+          <div className="visual-footer-actions" style={box(1640, 5027, 235, PART_TWO_HEIGHT, 65)}>
             <button type="button" aria-label="打开导航菜单">≡</button>
             <a href="#contact">联系我</a>
           </div>
 
-          <Layer number={949} x={-610} y={3595} width={1801} canvasHeight={PART_TWO_HEIGHT} className="visual-footer-face" alt="苏越肖像" />
-          <Layer number={946} x={320} y={3815} width={313} canvasHeight={PART_TWO_HEIGHT} className="visual-footer-bubble" />
-          <Layer number={945} x={355} y={3847} width={239} canvasHeight={PART_TWO_HEIGHT} className="visual-footer-bubble-copy" alt="这么快就走了？" />
+          <Layer number={949} x={-610} y={4890} width={1801} canvasHeight={PART_TWO_HEIGHT} className="visual-footer-face" alt="苏越肖像" />
+          <Layer number={946} x={320} y={5110} width={313} canvasHeight={PART_TWO_HEIGHT} className="visual-footer-bubble" />
+          <Layer number={945} x={355} y={5142} width={239} canvasHeight={PART_TWO_HEIGHT} className="visual-footer-bubble-copy" alt="这么快就走了？" />
 
-          <nav className="visual-footer-nav" style={box(710, 3805, 1080, PART_TWO_HEIGHT, 925)} aria-label="页尾导航">
+          <nav className="visual-footer-nav" style={box(710, 5100, 1080, PART_TWO_HEIGHT, 925)} aria-label="页尾导航">
             <a href="/"><span>01</span>主页</a>
             <a href="/#about"><span>02</span>关于我</a>
             <a href="/#experience"><span>03</span>经历</a>

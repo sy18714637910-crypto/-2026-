@@ -1,4 +1,5 @@
 import type { CSSProperties, Metadata } from 'next';
+import ModuleDirectory from '../components/module-directory';
 
 const DESIGN_WIDTH = 1921;
 const DESIGN_HEIGHT = 15182;
@@ -65,6 +66,8 @@ export default function ProductContentOperationsPage() {
           <Layer number={979} x={331} y={6149} width={1282} alt="吉林大米商城项目设计" />
           <Layer number={978} x={341} y={11990} width={1288} alt="日语学习账号内容运营复盘" />
         </section>
+
+        <ModuleDirectory style={box(60, 12300, 1801, 1220)} />
 
         <footer id="contact" className="product-detail-footer">
           <Layer number={1033} x={50} y={13810} width={229} className="product-footer-wordmark" alt="SU YUE" />
